@@ -24,15 +24,15 @@ class FileController extends Controller
         }
 
         //test employee ask MaxBeach
-        $test = [];
-        foreach ($final as $item) {
-            if(!isset($item['employee'])) {
-                $test[] = $item;
-            } else {
-                $test[] = $item['employee'];
-            }
-        }
-        dd($test);
+//        $test = [];
+//        foreach ($final as $item) {
+//            if(!isset($item['employee'])) {
+//                $test[] = $item;
+//            } else {
+//                $test[] = $item['employee'];
+//            }
+//        }
+//        dd($test);
 
         function look_for_array(array $test_var) {
             foreach ($test_var as $key => $el) {
@@ -85,7 +85,11 @@ class FileController extends Controller
             foreach ($item as $key => $el) {
                 foreach ($cellNames as $cellName) {
                     if ($key === $cellName['name']) {
-                        if (is_array($el)) {
+                        if($key === 'employee') {
+                            if(count($el) === 1 || count($el) === 2 || count($el) === 3 || count($el) === 4) {
+                                $sheet->setCellValue($cellName['type'] . $i, json_encode($el));
+                            }
+                        } else if (is_array($el)) {
                             if(empty($el)){
                                 $sheet->setCellValue($cellName['type'] . $i, 'null');
                             } else {
