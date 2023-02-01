@@ -23,6 +23,17 @@ class FileController extends Controller
             $final[] = $el;
         }
 
+        //test employee ask MaxBeach
+        $test = [];
+        foreach ($final as $item) {
+            if(!isset($item['employee'])) {
+                $test[] = $item;
+            } else {
+                $test[] = $item['employee'];
+            }
+        }
+        dd($test);
+
         function look_for_array(array $test_var) {
             foreach ($test_var as $key => $el) {
                 if (is_array($el)) {
