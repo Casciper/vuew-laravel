@@ -21,7 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('people')->group(function () {
     Route::post('/', [PersonController::class, 'store'])->name('person.store');
-    Route::get('/', [PersonController::class, 'index'])->name('person.get');
+    Route::get('/', [PersonController::class, 'index'])->name('persons.get');
+    Route::get('/{person}', [PersonController::class, 'person'])->name('person.get');
     Route::patch('/{person}', [PersonController::class, 'update'])->name('person.update');
     Route::delete('/{person}', [PersonController::class, 'delete'])->name('person.delete');
 });

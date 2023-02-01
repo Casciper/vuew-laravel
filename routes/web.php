@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\indexController;
 use App\Http\Controllers\PersonController;
 use Illuminate\Support\Facades\Route;
@@ -15,10 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/file', [FileController::class, 'show'])->name('file');
 
-Auth::routes();
-
-Route::get('/{page}', [IndexController::class, 'index'])->name('index');
+Route::get('{any?}', function () {
+    return view('layouts.app');
+})->where('any', '.*');

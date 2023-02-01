@@ -1,24 +1,12 @@
 import './bootstrap';
 import { createApp } from 'vue';
-import {createRouter, createWebHashHistory}  from 'vue-router'
-import Index from "./components/Index.vue";
-import HomeComponent from "./components/HomeComponent.vue";
-import NewsComponent from "./components/NewsComponent.vue";
-
-const routes = [
-    { path: '/', component: HomeComponent },
-    { path: '/news', component: NewsComponent },
-]
-
-const router = createRouter({
-    history:createWebHashHistory(),
-    routes,
-})
-
-export default router
+import App from "./components/App.vue";
+import router from "../js/router";
 
 const app = createApp({})
-app.component('index', Index)
+app.component('App', App)
 app.use(router)
 app.mount('#app')
+import './card';
+
 
